@@ -6,6 +6,12 @@ import (
 )
 
 func home(w http.ResponseWriter, r *http.Request)  {
+
+	if r.URL.Path != "/" {
+		http.NotFound(w , r)
+		return
+	}
+
 	w.Write([]byte("Hello from snippet box!"))
 }
 
@@ -14,6 +20,13 @@ func showSnippet(w http.ResponseWriter, r *http.Request){
 }
 
 func createSnippet(w http.ResponseWriter, r *http.Request){
+
+	if r.Method != http.MethodPost {
+		w.WriteHeader(405)
+		w.Write([]byte("Method not allowed"))
+		return
+	}
+
 	w.Write([]byte("Create a new snippet..."))
 }
 
