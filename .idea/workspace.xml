@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9815a20-3357-434b-ba2c-2005e3cbe1ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/static/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="b9815a20-3357-434b-ba2c-2005e3cbe1ca" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +44,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\Chapter2-3\ui\static\img" />
       <recent name="D:\Projects\Chapter2-3\cmd\web" />
     </key>
   </component>
