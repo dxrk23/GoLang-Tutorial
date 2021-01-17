@@ -1,6 +1,8 @@
 package main
 
 import (
+	"dimash/snippetbox/pkg/models"
+	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -40,7 +42,17 @@ func (app *application)showSnippet(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	fmt.Fprintf(w, "Display a specififc snippet with ID %d..." , id)
+	s, err := app.snippets.Get(id)
+	if err != nil {
+		if errors.Is(err, models.ErrNoRecord) {
+			app.notFound(w)
+		} else {
+			app.serverError(w, err)
+		}
+		return
+	}
+
+	fmt.Fprintf(w, "%v", s)
 }
 
 func (app *application)createSnippet(w http.ResponseWriter, r *http.Request){
@@ -51,9 +63,9 @@ func (app *application)createSnippet(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	title := "O snail"
+	title := "1 snail"
 	content := "O snail\nClimb Mount Fuji,\nBut slowly, slowly!\n\n– Kobayashi Issa"
-	expires := "7"
+	expires := "10"
 
 	id, err := app.snippets.Insert(title, content, expires)
 
