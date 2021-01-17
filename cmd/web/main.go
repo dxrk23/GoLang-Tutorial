@@ -21,11 +21,12 @@ type application struct {
 
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
-	dsn, err := pgxpool.Connect(context.Background(), 	"user=web password=1234 host=localhost port=5432 dbname=snippetbox sslmode=disable pool_max_conns=10")
 	flag.Parse()
 
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+	dsn, err := pgxpool.Connect(context.Background(),"user=web password=1234 host=localhost port=5432 dbname=snippetbox sslmode=disable pool_max_conns=10")
 
 	if err != nil {
 		log.Fatal(err)
