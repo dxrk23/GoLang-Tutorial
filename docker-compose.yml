@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  snippetboxdb:
+    image: postgres
+    container_name: "snippetboxdb"
+    environment:
+      - POSTGRES_DB=snippetbox
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+
+  snippetboxapi:
+    image: ${DOCKER_REGISTRY-}snippetbox
+    container_name: snippetbox
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4000:4000
+    depends_on: 
+      - snippetboxdb
